@@ -23,4 +23,25 @@ const fetchEmployeesInfo = async (url) => {
         gridContainer.innerHTML = `Getting employees info didn't go too well, error occured: ${err}`;
     }
 } 
+
+const displayEmployees = (employeeData) => {
+    // employees = employeeData;
+    let employeeHTML = '';
+    employeeData.forEach((employee, index) => {
+        let { name, email, location, picture } = employee;
+
+        employeeHTML += `
+            <div class="card" data-index="${index}>
+                <img class="avatar" src="${picture.large}" alt="member-${index}/>
+                <div class="modal-text">
+                    <h2 class"name">${name.first} ${name.last}</h2>
+                    <p class="email">${email}</p>
+                    <p class="address">${location.city}</p>
+                </div>
+            </div>
+        `
+    });
+    gridContainer.innerHTML = employeeHTML;
+}
 console.log(fetchEmployeesInfo(urlAPI));
+fetchEmployeesInfo(urlAPI).then(displayEmployees);
