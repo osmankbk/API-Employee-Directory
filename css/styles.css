@@ -1,9 +1,14 @@
+body {
+    position: relative;
+
+}
+
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(500px, max-content));
-    justify-content: space-evenly;
+    grid-template-columns: repeat(3, minmax(180px, 400px));
+    justify-content: space-around;
     grid-template-rows: auto;
-    grid-column-gap: 150px;
+    grid-row-gap: 50px;
     border: solid 2px red;
 }
 
@@ -13,5 +18,32 @@
 
 
 .overlay {
-    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(0, 0, 0, .4);
+}
+
+.modal {
+    width: 375px;
+    position: relative;
+    margin: 15% auto auto;
+    position: relative;
+    text-align: center;
+    padding: 30px 20px;
+    border-radius: 5px;
+    background-color: white;
+}
+
+.modal-close {
+    position: absolute;
+    right: 30px;
+    top: -15px;
+    cursor: pointer;
+}
+
+.hidden {
+  display: none;
 }
