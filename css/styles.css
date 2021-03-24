@@ -1,0 +1,17 @@
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(500px, max-content));
+    justify-content: space-evenly;
+    grid-template-rows: auto;
+    grid-column-gap: 150px;
+    border: solid 2px red;
+}
+
+.card {
+    border: solid 2px red;
+}
+
+
+.overlay {
+    display: none;
+}
