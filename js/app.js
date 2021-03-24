@@ -25,23 +25,22 @@ const fetchEmployeesInfo = async (url) => {
 } 
 
 const displayEmployees = (employeeData) => {
-    // employees = employeeData;
-    let employeeHTML = '';
     employeeData.forEach((employee, index) => {
         let { name, email, location, picture } = employee;
-
-        employeeHTML += `
-            <div class="card" data-index="${index}>
-                <img class="avatar" src="${picture.large}" alt="member-${index}/>
+        const card = document.createElement('div');
+        card.classList.add('card');
+        gridContainer.appendChild(card);
+        card.innerHTML = `
+                <div class="avatar-container">
+                    <img class="avatar" src=${picture.large} alt="member-${index}">
+                </div>
                 <div class="modal-text">
                     <h2 class"name">${name.first} ${name.last}</h2>
                     <p class="email">${email}</p>
                     <p class="address">${location.city}</p>
-                </div>
-            </div>
-        `
+                </div>`;
     });
-    gridContainer.innerHTML = employeeHTML;
+//    return gridContainer.innerHTML = employeeHTML;
 }
 console.log(fetchEmployeesInfo(urlAPI));
 fetchEmployeesInfo(urlAPI).then(displayEmployees);
