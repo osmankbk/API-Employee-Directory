@@ -6,8 +6,7 @@ const urlAPI = 'https://randomuser.me/api/?results=12&inc=name, picture, email, 
 const gridContainer = document.querySelector('.grid-container');
 //store modal container
 const overlay = document.querySelector('.overlay');
-//Store search input
-const search = document.querySelector('.search');
+
 const modal = document.querySelector('.modal');
 //store modal content
 const modalContent = document.querySelector('.modal-text');
@@ -36,6 +35,22 @@ const fetchEmployeesInfo = (url) => {
     .catch(err => console.log(err));
 }
 
+const searchEmployees = (data) => {
+ //Store search input
+const search = document.querySelector('.search');
+const body = document.querySelector('body');
+    body.addEventListener('keyup', (e) => {
+        const userInput = search.value;
+        data.forEach(cards => {
+            cards.style.display = 'none';
+            cards.textContent.includes(userInput.toLowerCase()) ? cards.style.display = 'flex' : cards.style.display = 'none';
+            // if(cards.textContent.includes(userInput.toLowerCase())) {
+            //     cards.style.display = 'flex';
+            // }
+        });
+    });
+}
+
 const displayEmployees = (employeeData) => {
         employees = employeeData
         employees.forEach((employee, index) => {
@@ -56,12 +71,8 @@ const displayEmployees = (employeeData) => {
         gridContainer.appendChild(card);   
     });
     const allCards = document.querySelectorAll('.card');
-    // search.addEventListener('keyup', (e) => {
-    //     let userInput = search.value;
-    //     allCards.forEach(info => {
+    searchEmployees(allCards);
 
-    //     })
-    // })
     console.log(allCards);
 }
 
@@ -85,13 +96,6 @@ const displayModal = (index) => {
     overlay.style.display = 'block';
    
 }
-
-
-const searchEmployees = (data) => {
-    console.log(data);
-}
-
-searchEmployees(employees);
 
 gridContainer.addEventListener('click', (e) => {
     const target = e.target;
