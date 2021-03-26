@@ -35,7 +35,23 @@ const fetchEmployeesInfo = (url) => {
     .catch(err => console.log(err));
 }
 
-const searchEmployees = (data) => {
+//Search for employees
+const searchEmployeesButton = (data) => {
+    const searchButton = document.querySelector('.search-button');
+    const search = document.querySelector('.search');
+    searchButton.addEventListener('click', (e) => {
+        const inputText = search.value;
+        data.forEach(cards => {
+            cards.style.display = 'none';
+            cards.textContent.includes(inputText.toLowerCase()) ? cards.style.display = 'flex' : cards.style.display = 'none';
+        });
+    });
+}
+
+
+
+//Filter employee on input
+const searchEmployeesInput = (data) => {
  //Store search input
 const search = document.querySelector('.search');
 const body = document.querySelector('body');
@@ -71,7 +87,8 @@ const displayEmployees = (employeeData) => {
         gridContainer.appendChild(card);   
     });
     const allCards = document.querySelectorAll('.card');
-    searchEmployees(allCards);
+    searchEmployeesButton(allCards);
+    searchEmployeesInput(allCards);
 
     console.log(allCards);
 }
