@@ -1,21 +1,69 @@
-body {
-    position: relative;
+* {
+    box-sizing: border-box;
+}
 
+body {
+    font-family: 'Nunito', Arial, Helvetica, sans-serif;
+    position: relative;
+    color: white;
+    background-color: black;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+.search-background{
+    width: 50%;
+    align-items: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: firebrick;
+}
+.search {
+    /* border: solid 2px red; */
+    width: 80%;
+    margin-top: 15px;
+    margin-left: 17%;
+    height: 40px;
+    border-radius: 5px;
+    outline: none
 }
 
 .grid-container {
     display: grid;
-    grid-template-columns: repeat(3, minmax(180px, 400px));
+    grid-template-columns: repeat(auto-fit, minmax(400px, max-content));
     justify-content: space-around;
     grid-template-rows: auto;
     grid-row-gap: 50px;
-    border: solid 2px red;
+    background-color: black;
 }
 
 .card {
-    border: solid 2px red;
+    display: flex;
+    border-radius: 5px;
+    background-color: black;
+    justify-content: space-between;
+    border: solid 2px firebrick;
 }
 
+.modal-text {
+    width: 100%;
+    padding-top: 10px;
+    /* border: solid 2px red; */
+}
+
+.modal-text h2 {
+    margin-bottom: 5px;
+}
+
+.modal-text p {
+    margin-top: 5px;
+}
+
+.modal-text p:last-of-type {
+    margin-top: -10px;
+}
 
 .overlay {
     position: absolute;
@@ -29,13 +77,15 @@ body {
 .modal {
     width: 375px;
     position: relative;
-    margin: 15% auto auto;
-    position: relative;
+    margin: 5% auto auto;
     text-align: center;
     padding: 30px 20px;
     border-radius: 5px;
-    background-color: white;
+    color: black;
+    border: solid 2px black;
+    background-color: firebrick;
 }
+
 
 .modal-close {
     position: absolute;
@@ -43,7 +93,29 @@ body {
     top: -15px;
     cursor: pointer;
 }
+.modal p {
+    padding-top: 5px;
+}
 
-.hidden {
-  display: none;
+#phone {
+    margin-top: 30px;
+}
+
+#address {
+    padding-top: 0px;
+    margin-bottom: 30px;
+}
+
+.avatar {
+    width: 95px;
+    margin: 15px 10px 10px 15px;
+    border-radius: 50%;
+    border:solid 2px firebrick;
+}
+
+.modal-avatar {
+    width: 200px;
+    margin: 0px 10px 0px 15px;
+    border-radius: 50%;
+    border: solid 2px black;
 }
