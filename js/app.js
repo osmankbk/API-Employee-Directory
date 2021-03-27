@@ -16,19 +16,7 @@ const modalContent = document.querySelector('.modal-text');
  overlay.style.display = 'none';
 
 
-//Fetch data from API
-// const fetchEmployeesInfo = async (url) => {
-//     try{
-//         const request = await fetch(url);
-//         const response = await request.json();
-//         return Promise.all(response.results);
-//     }
-//     catch(err) {
-//         console.log(err);
-//         gridContainer.innerHTML = `Getting employees info didn't go too well, error occured: ${err}`;
-//     }
-// } 
-
+ //Functiion that makes the fetch request & parse the respnse, & pass it on to displayEmployees func.
 const fetchEmployeesInfo = (url) => {
     fetch(url)
     .then(res => res.json())
@@ -37,14 +25,13 @@ const fetchEmployeesInfo = (url) => {
     .catch(err => console.log(err));
 }
 
-//Search for employees
+//Search for employees function, shows only those that matchs the input value.
 const searchEmployeesButton = (data) => {
     const searchButton = document.querySelector('.search-button');
     const search = document.querySelector('.search');
     searchButton.addEventListener('click', (e) => {
         const inputText = search.value;
         data.forEach(cards => {
-            cards.style.display = 'none';
             cards.textContent.includes(inputText.toLowerCase()) ? cards.style.display = 'flex' : cards.style.display = 'none';
         });
     });
@@ -136,12 +123,8 @@ const displayModal = (index) => {
     overlay.style.display = 'block';
     console.log(index);
     nextModalView(index);
-    previoustModalView(index);
+    previoustModalView(index);    
 }
-
-// nextButton.addEventListener('click', (e) => {
-//     console.log(index);
-// });
 
 //Click event that displays the modal when anywhere other than grid container is clicked.
 gridContainer.addEventListener('click', (e) => {
@@ -156,5 +139,5 @@ gridContainer.addEventListener('click', (e) => {
 //Closes the modal view
 modalCloseButton.addEventListener('click', () => {
   overlay.style.display = 'none';
-})
+});
 
