@@ -6,7 +6,7 @@ const urlAPI = 'https://randomuser.me/api/?results=12&inc=name, picture, email, 
 const gridContainer = document.querySelector('.grid-container');
 //store modal container
 const overlay = document.querySelector('.overlay');
-
+//Store modal
 const modal = document.querySelector('.modal');
 //store modal content
 const modalContent = document.querySelector('.modal-text');
@@ -14,6 +14,8 @@ const modalContent = document.querySelector('.modal-text');
  const modalCloseButton = document.querySelector('.modal-close');
 //Hide overlay div on load
  overlay.style.display = 'none';
+
+
 //Fetch data from API
 // const fetchEmployeesInfo = async (url) => {
 //     try{
@@ -48,8 +50,6 @@ const searchEmployeesButton = (data) => {
     });
 }
 
-
-
 //Filter employee on input
 const searchEmployeesInput = (data) => {
  //Store search input
@@ -60,13 +60,11 @@ const body = document.querySelector('body');
         data.forEach(cards => {
             cards.style.display = 'none';
             cards.textContent.includes(userInput.toLowerCase()) ? cards.style.display = 'flex' : cards.style.display = 'none';
-            // if(cards.textContent.includes(userInput.toLowerCase())) {
-            //     cards.style.display = 'flex';
-            // }
         });
     });
 }
 
+//Displays all employees.
 const displayEmployees = (employeeData) => {
         employees = employeeData
         employees.forEach((employee, index) => {
@@ -89,10 +87,35 @@ const displayEmployees = (employeeData) => {
     const allCards = document.querySelectorAll('.card');
     searchEmployeesButton(allCards);
     searchEmployeesInput(allCards);
-
-    console.log(allCards);
 }
 
+//Navigate next employee in modal view
+const nextModalView = (currentModal) => {
+//Store next button
+const nextButton = document.querySelector('.next');
+    nextButton.addEventListener('click', () => {
+        if(currentModal <= 10) {
+            overlay.style.display = 'none';
+            currentModal++;
+            displayModal(currentModal);
+        } 
+    });
+}
+
+//Navigate previous employee in modal view
+const previoustModalView = (currentModal) => {
+    //Store next button
+    const prevButton = document.querySelector('.previous');
+        prevButton.addEventListener('click', () => {
+            if(currentModal >= 1) {
+                overlay.style.display = 'none';
+                currentModal--;
+                displayModal(currentModal);
+            } 
+        });
+    }
+
+//Call function after displayEmployees has be initialized.
 fetchEmployeesInfo(urlAPI);
 
 //Function for display modal view.
@@ -108,12 +131,19 @@ const displayModal = (index) => {
                 <p id="phone">(302)${phone}</p>
                 <p>${location.street.number} ${location.street.name}, ${location.city}, ${location.state}, ${location.postcode}</p>
                 <p>Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
-    `;
+                `;
     modalContent.innerHTML = modalHtml;
     overlay.style.display = 'block';
-   
+    console.log(index);
+    nextModalView(index);
+    previoustModalView(index);
 }
 
+// nextButton.addEventListener('click', (e) => {
+//     console.log(index);
+// });
+
+//Click event that displays the modal when anywhere other than grid container is clicked.
 gridContainer.addEventListener('click', (e) => {
     const target = e.target;
     if(target !== gridContainer) {
@@ -121,9 +151,9 @@ gridContainer.addEventListener('click', (e) => {
         const index = card.getAttribute('data-index');
         displayModal(index); 
     }
-
 });
 
+//Closes the modal view
 modalCloseButton.addEventListener('click', () => {
   overlay.style.display = 'none';
 })
