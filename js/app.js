@@ -132,7 +132,7 @@ const displayModal = (index) => {
                 <p class="email">${email}</p>
                 <p id="address">${location.city}</p>
                 <hr class="line"/>
-                <p id="phone">(302)${phone}</p>
+                <p id="phone">${phone}</p>
                 <p>${location.street.number} ${location.street.name}, ${location.city}, ${location.state}, ${location.postcode}</p>
                 <p>Birthday: ${date.getMonth()}/${date.getDate()}/${date.getFullYear()}</p>
                 `;
