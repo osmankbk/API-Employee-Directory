@@ -1,2 +1,2 @@
 # API-Employee-Directory
-An employee directory that shares information by communicating with a Random user Generator API. It makes a fetch request, parse the response, & distribute employee information accordingly.
+An employee directory that shares information by communicating with a Random user Generator API. It makes a fetch request, parse the response, & distribute employee information accordingly. Opends modal view, & extends employee info on click.
