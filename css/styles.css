@@ -103,9 +103,9 @@ h1 {
 	text-align: center;
 	padding: 30px 20px;
 	border-radius: 5px;
-	color: black;
+	color: white;
 	border: solid 2px black;
-	background-color: firebrick;
+	background-color: rgb(192, 35, 35);
 }
 .modal-close {
 	position: absolute;
